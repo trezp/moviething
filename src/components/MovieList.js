@@ -1,13 +1,11 @@
 import React from 'react'; 
 import axios from 'axios';
-//import config from '../config.js';
 
 import Movie from './Movie';
 
-const searchTerm = "oregon";
-
-//const API_KEY = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_KEY : config.API_KEY;
+// you can set REACT_APP_API_KEY both in an .env file(for working locally) and in heroku 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const searchTerm = "oregon";
 
 export default class MovieList extends React.Component {
   constructor(props) {
@@ -18,8 +16,7 @@ export default class MovieList extends React.Component {
   }
 
   getMovies(){
-    // Using the api key to request movies using the search term "oregon" 
-    axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&plot=full`)
+    axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
     .then((response) => {
       this.setState({results: response.data.Search}); 
     })
