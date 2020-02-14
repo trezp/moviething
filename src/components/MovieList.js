@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Movie from './Movie';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
 const searchTerm = "oregon";
 
 export default class MovieList extends React.Component {
@@ -15,7 +14,7 @@ export default class MovieList extends React.Component {
   }
 
   getMovies(){
-    axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
+    axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${searchTerm}`)
     .then((response) => {
       this.setState({results: response.data.Search}); 
     })
