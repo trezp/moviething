@@ -1,11 +1,12 @@
 import React from 'react'; 
 import axios from 'axios';
-import config from '../apiConfig.js';
+//import config from '../apiConfig.js';
 
 import Movie from './Movie';
 
 const searchTerm = "oregon";
-const apiKey = process.env.NODE_ENV === 'production' ? process.env.API_KEY : config.API_KEY;
+//const apiKey = process.env.NODE_ENV === 'production' ? process.env.API_KEY : config.API_KEY;
+const apiKey = process.env.API_KEY;
 
 export default class MovieList extends React.Component {
   constructor(props) {
