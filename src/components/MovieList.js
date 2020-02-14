@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Movie from './Movie';
 
-// you can set REACT_APP_API_KEY both in an .env file(for working locally) and in heroku 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const searchTerm = "oregon";
 
