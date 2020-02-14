@@ -16,7 +16,7 @@ export default class MovieList extends React.Component {
   }
 
   getMovies(){
-    axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&plot=full`)
+    axios.get(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&plot=full`)
     .then((response) => {
       this.setState({results: response.data.Search}); 
     })
