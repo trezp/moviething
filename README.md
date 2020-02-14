@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HELP! MY API KEY WORKS FABULOUSLY WITH MY REACT APP WHEN I RUN MY APP LOCALLY, BUT WHAT IF I WANT TO DEPLOY IT?
 
-## Available Scripts
+## ...the internet makes this far too difficult of a question to answer. Soooo how to do you deploy a front end React app while using and hiding API keys?  
 
-In the project directory, you can run:
+1. Deploy your app to Heroku. This is a much less heinous task to google. 
 
-### `npm start`
+2. Create a .env file and make sure it's in your .gitignore. Your env variable MUST begin called
+REACT_APP_, or so random tutorials claim. In you .env file, do this:  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+REACT_APP_API_KEY=yourkeywithnoquotes
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+* I think you need to restart your react app now * 
 
-### `npm test`
+3. Hooray! Now go to the settings of your app in Heroku and enter a key value pair in the "Config Vars" section. The value should be REACT_APP_API_KEY and your API is the value. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Wherever you wish to use your API key in the api, you can now refer to it as:
 
-### `npm run build`
+```
+process.env.REACT_APP_API_KEY
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Smart magic happens now and your API key is kept safe by Heroku and hidden from github. Now you can go wild. You can shove your safely hidden API key in a variable and use it in an API request: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+const API_KEY = process.env.REACT_APP_API_KEY;
+axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
+```
 
-### `npm run eject`
+The world is your now your oyster! Look at MovieList.js to see this example in context, and enjoy. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+(Would you like to help improve this shitty documentation? Please make a pull request!)
