@@ -12,7 +12,7 @@ const searchTerm = "oregon";
 // local copy (that we don't push to github)
 const API_KEY = process.env.NODE_ENV === 'production' ? `${process.env.REACT_APP_API_KEY}` : config.API_KEY;
 
-console.log(config.API_KEY)
+console.log(process.env.NODE_ENV)
 
 export default class MovieList extends React.Component {
   constructor(props) {
