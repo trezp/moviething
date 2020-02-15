@@ -2,10 +2,12 @@ import React from 'react';
 
 export default class Movie extends React.Component {
   render() {
+    const movieUrl = `https://www.imdb.com/title/${this.props.movie.imdbID}`;
     return (
       <li> 
-        <h2>{this.props.movie.Title}</h2>
-        <p>{this.props.movie.Year}</p>
+        <a href={movieUrl} rel="noopener noreferrer" target="_blank">
+          {this.props.movie.Title}, {this.props.movie.Year}
+        </a>
       </li>
     )
   }

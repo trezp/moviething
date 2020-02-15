@@ -12,7 +12,13 @@ code {
     monospace;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 .app-container {
-  width: 80%;
   margin: auto;
+  padding-top: 30px;
+  width: 80%;
 }
