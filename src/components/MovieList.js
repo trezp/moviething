@@ -3,10 +3,6 @@ import axios from 'axios';
 
 import Movie from './Movie';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-
-const searchTerm = "oregon";
-
 export default class MovieList extends React.Component {
   constructor(props) {
     super(props);
@@ -16,9 +12,9 @@ export default class MovieList extends React.Component {
   }
 
   getMovies(){
-    axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
+    axios.get(`http://localhost:3001`)
     .then((response) => {
-      this.setState({results: response.data.Search}); 
+      this.setState({results: response.data}); 
     })
     .catch((error)=> {
       this.setState({error: error});

@@ -29,7 +29,16 @@ axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
 The world is your now your oyster! Look at MovieList.js to see this example in context, and enjoy.
 
 ### OPTION TWO: Setting up the smallest backend possible to hide away those secrets
-Coming soon! 
+1. Create a server.js file in the root of project
+2. Install express: 
+
+```npm install express```
+
+3. Install a cors package to prevent annoying CORS errors 
+
+```npm install cors```
+
+3. See the server js file in this app for example code 
 
 
 (Would you like to help improve this shitty documentation? Please make a pull request!)
