@@ -28,17 +28,37 @@ axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
 ```
 The world is your now your oyster! Look at MovieList.js to see this example in context, and enjoy.
 
-### OPTION TWO: Setting up the smallest backend possible to hide away those secrets
-1. Create a server.js file in the root of project
-2. Install express: 
+### OPTION TWO: Set up teeny tiny backend
+Okay, so you've decided not to be lazy. Congrats, you're probably a better dev than I am! Basically what you're going to do here is create a little Express server that will make the request to the API on behalf of your front end. Your front end will then request the data from your Express server. This keeps
+your secret keys nice and safe. 
 
-```npm install express```
+You _could_ deploy your backend seperately, but meh. We're going to do it all together. 
 
-3. Install a cors package to prevent annoying CORS errors 
+1. Create a `backend` folder in the root of project
+2. Do all this stuff: 
 
-```npm install cors```
+```
+npm init
+npm install express cors axios 
 
-3. See the server js file in this app for example code 
+```
+
+You'll need this cors middleware so your app doesn't yell at you for trying to request data from a different domain. Yes, you'll have another package.json and another node_modules folder
+ 
+3. Make a .gitignore in this folder and add your node_modules folder to it!
+
+4. Create a file in your backend folder called `server.js`. See the `server.js` file in this project for an example of what the request and response might look like. Do that. 
+
+5. In your React component, you can now make a request to your express server. See the MovieList.js file
+for an example. 
+
+6. Make sure it all works by starting your react app in one terminal tab and your express server in another terminal tab. You'll start your express server like this, passing it your api key: 
+
+```
+REACT_APP_API_KEY=yourapikeynoquotes node server.js
+```
+
+7. If it works, hooray! Push to Heroku and hope for the best X-D (Use config vars to store your secret keys, if you haven't already)
 
 
 (Would you like to help improve this shitty documentation? Please make a pull request!)
