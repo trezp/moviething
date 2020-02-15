@@ -4,6 +4,7 @@ import axios from 'axios';
 import Movie from './Movie';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+
 const searchTerm = "oregon";
 
 export default class MovieList extends React.Component {
