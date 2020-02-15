@@ -49,7 +49,7 @@ You'll need this cors middleware so your app doesn't yell at you for trying to r
 
 4. Create a file in your backend folder called `server.js`. See the `server.js` file in this project for an example of what the request and response might look like. Do that. 
 
-5. In your React component, you can now make a request to your express server. See the MovieList.js file
+5. In your React component, you can now make a request to your express server. See the `MovieSearch.js` file
 for an example. 
 
 6. Make sure it all works by starting your react app in one terminal tab and your express server in another terminal tab. You'll start your express server like this, passing it your api key: 
