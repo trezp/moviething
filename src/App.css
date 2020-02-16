@@ -19,3 +19,7 @@ form.search button:hover {
   color: #fff;
   background: #000;
 }
+
+.error {
+  color: red;
+}
