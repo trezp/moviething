@@ -11,7 +11,8 @@ export default class MovieSearch extends React.Component {
     this.state = {
       inputValue: '',
       searchTerm: 'butterfly',
-      searchResults: []
+      searchResults: [],
+      error: null
     };
   }
 
@@ -33,6 +34,7 @@ export default class MovieSearch extends React.Component {
   }
 
   handleSearch = (event)=> {
+    event.preventDefault();
     this.getMovies();
     this.setState({inputValue: ''});
 
@@ -44,21 +46,28 @@ export default class MovieSearch extends React.Component {
   }
 
   render() {
-    const searchStyles = {
-      paddingTop: "30px",
+    if(!this.state.error){
+      return (
+        <div>
+          <form className="search">
+            <input aria-label="search" id="movieSearch" type="text" 
+              value={this.state.inputValue}
+              onChange={this.handleChange}>
+            </input>
+            <button type="submit" onClick={this.handleSearch}>Search</button>
+          </form>
+          
+          <MovieList 
+            results={this.state.searchResults} 
+            searchTerm={this.state.searchTerm}>
+          </MovieList>
+        </div>
+      );
+    } else {
+      return (
+        <h1>Sorry, something went wrong. Please try again later!</h1>
+      )
     }
-    return (
-      <div>
-        <form class="search">
-          <input aria-label="search" id="movieSearch" type="text" 
-            value={this.state.inputValue}
-            onChange={this.handleChange}>
-          </input>
-          <button type="button" onClick={this.handleSearch}>Search</button>
-        </form>
-        
-        <MovieList results={this.state.searchResults}></MovieList>
-      </div>
-    );
+
   }
 }

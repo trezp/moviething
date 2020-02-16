@@ -1,14 +1,20 @@
 import React from 'react'; 
 import Movie from './Movie';
 
-export default class MovieList extends React.Component {
-  render() {
+function MovieList(props){
+  if(!props.results){
     return (
-      <ul>
-        {this.props.results.map((movie, index) => (
-          <Movie movie={movie} key={index}></Movie>
-        ))}
-      </ul>
-    );
-  }
+      <p className="error">Oops! Your search didn't yield any results. Please try again.</p>
+    )
+  } 
+
+  return (
+    <ul>
+      {props.results.map((movie, index) => (
+        <Movie movie={movie} key={index}></Movie>
+      ))}
+    </ul>
+  );
 }
+
+export default MovieList; 
