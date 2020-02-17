@@ -1,15 +1,19 @@
-const express = require('express')
+const path = require('path');
+const express = require('express');
+const publicPath = path.join(__dirname, "..", 'public');
+const port = process.env.PORT || 3001;
+
 const axios = require('axios');
 const cors = require('cors');
 
 const app = express();
-const port = 3001;
 
 // when you run your express serve locally, you'll run it like this, passing along your api key: 
 // REACT_APP_API_KEY=yourapikeynoquotes node server.js
 const API_KEY = process.env.REACT_APP_API_KEY;
 //const searchTerm = "sunshine";
 
+app.use(express.static(publicPath));
 // goodbye, stupid cors errors
 app.use(cors());
 
